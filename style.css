@@ -111,8 +111,10 @@ body.show-content .content {
   font-size: 16px;
   opacity: 0.85;
   background: rgba(255,255,255,0.12);
-border: 1px solid rgba(255,255,255,0.22);
-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(6px);
+  padding: 6px 14px;
+  border-radius: 999px;
 }
 /* 갤러리 그리드 */
 .grid {
