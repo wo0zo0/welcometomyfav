@@ -192,3 +192,14 @@ body.show-content .content {
   max-width: 74vw;
   max-height: 80vh;
 }
+.lb-count {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.5);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  opacity: 0.85;
+}
