@@ -49,9 +49,11 @@ body {
 .close-btn {
   position: absolute;
   top: 24px;
-  right: 18px;
+  left: 24px;
   background: none;
   border: none;
-  color: white;
-  font-size: 40px;
+  color: #fff;
+  font-size: 72px;
+  line-height: 1;
+  padding: 0;
 }
