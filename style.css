@@ -111,3 +111,16 @@ body.show-content .content {
   font-size: 14px;
   line-height: 1.6;
 }
+.logo-btn {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  z-index: 20;
+}
