@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>김건우 아카이브</title>
+  <title>GEONWOO ARCHIVE</title>
   <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
@@ -13,7 +13,7 @@
     <button class="close-btn" aria-label="close">←</button>
     <ul>
       <li><a class="menu-link" href="#selfie">설표셀피</a></li>
-      <li><a class="menu-link" href="#songs">추천곡</a></li>
+      <li><a class="menu-link" href="#songs">PLAYLIST</a></li>
     </ul>
   </nav>
 
@@ -33,7 +33,7 @@
     </section>
 
     <section id="songs" class="section">
-      <h2>추천곡</h2>
+      <h2>PLAYLIST</h2>
       <p>여긴 나중에 채울거임</p>
     </section>
   </main>
@@ -152,7 +152,16 @@ document.addEventListener('DOMContentLoaded', () => {
   lbClose.addEventListener('click', closeLb)
   lbPrev.addEventListener('click', () => setLb(current - 1))
   lbNext.addEventListener('click', () => setLb(current + 1))
+let uiHidden = false
 
+lbImg.addEventListener('click', () => {
+  uiHidden = !uiHidden
+
+  lbClose.style.display = uiHidden ? 'none' : 'block'
+  lbPrev.style.display = uiHidden ? 'none' : 'block'
+  lbNext.style.display = uiHidden ? 'none' : 'block'
+  lbCount.style.display = uiHidden ? 'none' : 'block'
+})
   // 스와이프
   let startX = 0
   let startY = 0
