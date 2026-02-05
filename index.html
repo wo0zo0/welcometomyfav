@@ -39,6 +39,12 @@
   const close = document.querySelector('.close-btn')
   const links = document.querySelectorAll('.menu-link')
 
+  function openContentAndGo(hash) {
+    document.body.classList.add('show-content')
+    const target = document.querySelector(hash)
+    if (target) target.scrollIntoView()
+  }
+
   btn.addEventListener('click', () => {
     menu.classList.toggle('open')
   })
@@ -50,11 +56,17 @@
   links.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault()
-      const target = document.querySelector(link.getAttribute('href'))
+      const hash = link.getAttribute('href')
       menu.classList.remove('open')
-      if (target) target.scrollIntoView()
+      history.replaceState(null, "", hash)
+      openContentAndGo(hash)
     })
   })
+
+  if (location.hash) {
+    document.body.classList.add('show-content')
+    openContentAndGo(location.hash)
+  }
 </script>
 </body>
 </html>
