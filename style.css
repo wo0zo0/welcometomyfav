@@ -4,49 +4,36 @@ body {
   color: #fff;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
 }
+
+/* ☰ 버튼 */
 .menu-btn {
   position: fixed;
   top: 16px;
   left: 16px;
   background: none;
   border: none;
-  color: white;
+  color: #fff;
   font-size: 96px;
   line-height: 1;
+  padding: 0;
+  z-index: 20;
 }
+
+/* 메뉴: 검정 전체화면, 전환효과 없음 */
 .menu {
   position: fixed;
   inset: 0;
   background: #000;
-
   display: none;
   align-items: center;
   justify-content: center;
+  z-index: 30;
 }
 
 .menu.open {
   display: flex;
 }
-.menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 56px;
-  text-align: center;
-}
 
-.menu li {
-  padding: 18px 24px;
-  border-radius: 16px;
-}
-
-.menu li:active {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.menu.open {
-  transform: translateX(0);
-}
 .close-btn {
   position: absolute;
   top: 24px;
@@ -58,15 +45,59 @@ body {
   line-height: 1;
   padding: 0;
 }
+
+/* 메뉴 링크 */
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 56px;
+}
+
+.menu li {
+  margin: 18px 0;
+}
+
 .menu-link {
   color: #fff;
   text-decoration: none;
   display: inline-block;
   padding: 10px 16px;
 }
-.menu-link:visited { color: #fff; }
-.content { display: none; }
 
-body.show-content .content { display: block; }
-.content { display: none !important; }
-body.show-content .content { display: block !important; }
+.menu-link:visited { color: #fff; }
+
+/* 첫 화면은 비워두기: content 기본 숨김 */
+.content {
+  display: none !important;
+  padding: 140px 24px 60px;
+}
+
+body.show-content .content {
+  display: block !important;
+}
+
+.section {
+  margin-top: 80px;
+  scroll-margin-top: 140px;
+}
+
+.section h2 {
+  margin: 0 0 18px;
+  font-size: 44px;
+}
+
+/* 갤러리 그리드 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
