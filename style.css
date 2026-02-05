@@ -102,19 +102,21 @@ body.show-content .content {
 /* 하단 번호 표시 */
 .lb-count {
   position: fixed;
-  bottom: 18px;
   left: 50%;
+  bottom: 20px;
   transform: translateX(-50%);
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  font-size: 16px;
-  opacity: 0.85;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.22);
-  backdrop-filter: blur(6px);
+  width: auto;
   padding: 6px 14px;
   border-radius: 999px;
+
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  opacity: 0.9;
+
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(6px);
 }
 /* 갤러리 그리드 */
 .grid {
