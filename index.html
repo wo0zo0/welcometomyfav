@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lbClose = document.getElementById('lbClose')
   const lbPrev = document.getElementById('lbPrev')
   const lbNext = document.getElementById('lbNext')
-
+  const lbCount = document.getElementById('lbCount')
   // lightbox 요소가 없으면 여기서 종료 (메뉴는 계속 정상 작동)
   if (!lb || !lbImg || !lbClose || !lbPrev || !lbNext) return
 
@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     current = (i + imgs.length) % imgs.length
     lbImg.src = imgs[current].src
     lbImg.alt = imgs[current].alt || ''
+    lbCount.textContent = (current + 1) + '/' + imgs.length
   }
 
   function openLbFrom(img) {
