@@ -40,14 +40,16 @@
   const links = document.querySelectorAll('.menu-link')
 
   function openContentAndGo(hash) {
-    document.body.classList.add('show-content')
+  document.body.classList.add('show-content')
 
-    const target = document.querySelector(hash)
-    // display:none -> block 전환 직후엔 스크롤이 씹힐 수 있어서 한 박자 늦춤
-    setTimeout(() => {
-      if (target) target.scrollIntoView({ block: 'start' })
-    }, 0)
-  }
+  const target = document.querySelector(hash)
+  setTimeout(() => {
+    if (!target) return
+
+    const y = target.getBoundingClientRect().top + window.pageYOffset
+    window.scrollTo({ top: y, left: 0 })
+  }, 50)
+}
 
   btn.addEventListener('click', () => {
     menu.classList.toggle('open')
