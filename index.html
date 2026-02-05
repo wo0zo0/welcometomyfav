@@ -92,6 +92,13 @@ logoBtn.addEventListener('click', () => {
   window.scrollTo(0, 0)
 })
   </script>
-  
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="close">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="prev">‹</button>
+
+  <img class="lb-img" id="lbImg" alt="">
+
+  <button class="lb-nav lb-next" id="lbNext" aria-label="next">›</button>
+</div>
 </body>
 </html>
