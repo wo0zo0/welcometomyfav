@@ -76,7 +76,7 @@ body {
 /* 첫 화면은 비워두기: content 기본 숨김 */
 .content {
   display: none !important;
-  padding: 140px 24px 60px;
+  padding: 90px 24px 60px;
 }
 
 body.show-content .content {
