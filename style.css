@@ -92,7 +92,23 @@ body.show-content .content {
   margin: 0 0 14px;
   font-size: 22px;
 }
+/* 라이트박스에서 버튼 공간 확보 */
+.lb-img {
+  max-width: 78vw;
+  max-height: 86vh;
+  object-fit: contain;
+}
 
+/* 하단 번호 표시 */
+.lb-count {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 16px;
+  opacity: 0.85;
+}
 /* 갤러리 그리드 */
 .grid {
   display: grid;
