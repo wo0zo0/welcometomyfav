@@ -65,3 +65,6 @@ body {
   padding: 10px 16px;
 }
 .menu-link:visited { color: #fff; }
+.content { display: none; }
+
+body.show-content .content { display: block; }
