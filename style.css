@@ -186,5 +186,9 @@ body.show-content .content {
   opacity: 0.9;
 }
 
-.lb-prev { left: 10px; }
-.lb-next { right: 10px; }
+.lb-prev { left: 0px; }
+.lb-next { right: 0px; }
+.lb-img {
+  max-width: 74vw;
+  max-height: 80vh;
+}
