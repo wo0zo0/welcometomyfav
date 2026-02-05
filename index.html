@@ -37,6 +37,7 @@
   const btn = document.querySelector('.menu-btn')
   const menu = document.querySelector('.menu')
   const close = document.querySelector('.close-btn')
+  const links = document.querySelectorAll('.menu-link')
 
   btn.addEventListener('click', () => {
     menu.classList.toggle('open')
@@ -44,6 +45,15 @@
 
   close.addEventListener('click', () => {
     menu.classList.remove('open')
+  })
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
+      const target = document.querySelector(link.getAttribute('href'))
+      menu.classList.remove('open')
+      if (target) target.scrollIntoView()
+    })
   })
 </script>
 </body>
