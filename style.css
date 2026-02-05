@@ -113,3 +113,13 @@ body.show-content .content {
   font-size: 16px;
   line-height: 1.6;
 }
+/* 본문 글자 크기 강제 */
+.content,
+.content * {
+  font-size: 16px !important;
+}
+
+/* 섹션 제목만 다시 키우기 */
+.content .section h2 {
+  font-size: 36px !important;
+}
