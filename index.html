@@ -109,7 +109,7 @@ function setLb(i) {
 }
 
 function openLb(i) {
-  imgs = Array.from(document.querySelectorAll('#selfie .grid img'))
+  imgs = Array.from(document.querySelectorAll('.grid img'))
   setLb(i)
   lb.classList.add('open')
   lb.setAttribute('aria-hidden', 'false')
@@ -123,7 +123,7 @@ function closeLb() {
   lbImg.src = ''
 }
 
-document.querySelectorAll('#selfie .grid img').forEach((img, i) => {
+document.querySelectorAll('.grid img').forEach((img, i) => {
   img.style.cursor = 'pointer'
   img.addEventListener('click', () => openLb(i))
 })
