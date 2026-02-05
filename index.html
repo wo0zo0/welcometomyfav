@@ -91,6 +91,72 @@ logoBtn.addEventListener('click', () => {
   history.replaceState(null, "", location.pathname)
   window.scrollTo(0, 0)
 })
+    // ===== Lightbox (tap to fullscreen + swipe) =====
+const lb = document.getElementById('lightbox')
+const lbImg = document.getElementById('lbImg')
+const lbClose = document.getElementById('lbClose')
+const lbPrev = document.getElementById('lbPrev')
+const lbNext = document.getElementById('lbNext')
+
+let imgs = []
+let current = 0
+
+function setLb(i) {
+  if (!imgs.length) return
+  current = (i + imgs.length) % imgs.length
+  lbImg.src = imgs[current].src
+  lbImg.alt = imgs[current].alt || ''
+}
+
+function openLb(i) {
+  imgs = Array.from(document.querySelectorAll('#selfie .grid img'))
+  setLb(i)
+  lb.classList.add('open')
+  lb.setAttribute('aria-hidden', 'false')
+  document.body.style.overflow = 'hidden'
+}
+
+function closeLb() {
+  lb.classList.remove('open')
+  lb.setAttribute('aria-hidden', 'true')
+  document.body.style.overflow = ''
+  lbImg.src = ''
+}
+
+document.querySelectorAll('#selfie .grid img').forEach((img, i) => {
+  img.style.cursor = 'pointer'
+  img.addEventListener('click', () => openLb(i))
+})
+
+lbClose.addEventListener('click', closeLb)
+lb.addEventListener('click', (e) => {
+  if (e.target === lb) closeLb()
+})
+
+lbPrev.addEventListener('click', () => setLb(current - 1))
+lbNext.addEventListener('click', () => setLb(current + 1))
+
+// swipe
+let startX = 0
+let startY = 0
+
+lb.addEventListener('touchstart', (e) => {
+  const t = e.touches[0]
+  startX = t.clientX
+  startY = t.clientY
+}, { passive: true })
+
+lb.addEventListener('touchend', (e) => {
+  const t = e.changedTouches[0]
+  const dx = t.clientX - startX
+  const dy = t.clientY - startY
+
+  // 세로 스크롤 방해 안 하려고, 좌우 스와이프만 크게 잡음
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+    if (dx < 0) setLb(current + 1)
+    else setLb(current - 1)
+  }
+})
   </script>
   <div class="lightbox" id="lightbox" aria-hidden="true">
   <button class="lb-close" id="lbClose" aria-label="close">×</button>
