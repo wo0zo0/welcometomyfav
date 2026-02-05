@@ -79,6 +79,13 @@ function openContentAndGo(hash) {
     if (location.hash) {
       openContentAndGo(location.hash)
     }
+    const logoBtn = document.querySelector('.logo-btn')
+
+logoBtn.addEventListener('click', () => {
+  document.body.classList.remove('show-content')
+  history.replaceState(null, "", location.pathname)
+  window.scrollTo(0, 0)
+})
   </script>
 </body>
 </html>
