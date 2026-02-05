@@ -101,10 +101,12 @@ body.show-content .content {
 
 /* 하단 번호 표시 */
 .lb-count {
-  position: absolute;
+  position: fixed;
   bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
   color: #fff;
   font-size: 16px;
   opacity: 0.85;
