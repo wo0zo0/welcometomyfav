@@ -19,9 +19,14 @@
   <script>
   const btn = document.querySelector('.menu-btn')
   const menu = document.querySelector('.menu')
+  const close = document.querySelector('.close-btn')
 
   btn.addEventListener('click', () => {
     menu.classList.toggle('open')
+  })
+
+  close.addEventListener('click', () => {
+    menu.classList.remove('open')
   })
 </script>
 </body>
