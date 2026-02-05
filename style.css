@@ -68,3 +68,5 @@ body {
 .content { display: none; }
 
 body.show-content .content { display: block; }
+.content { display: none; }
+body.show-content .content { display: block; }
