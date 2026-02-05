@@ -41,8 +41,12 @@
 
   function openContentAndGo(hash) {
     document.body.classList.add('show-content')
+
     const target = document.querySelector(hash)
-    if (target) target.scrollIntoView()
+    // display:none -> block 전환 직후엔 스크롤이 씹힐 수 있어서 한 박자 늦춤
+    setTimeout(() => {
+      if (target) target.scrollIntoView({ block: 'start' })
+    }, 0)
   }
 
   btn.addEventListener('click', () => {
