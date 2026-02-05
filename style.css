@@ -124,3 +124,49 @@ body.show-content .content {
   font-weight: 600;
   z-index: 20;
 }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lb-img {
+  max-width: 92vw;
+  max-height: 86vh;
+  object-fit: contain;
+}
+
+.lb-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 56px;
+  line-height: 1;
+  padding: 10px 14px;
+  opacity: 0.9;
+}
+
+.lb-prev { left: 10px; }
+.lb-next { right: 10px; }
