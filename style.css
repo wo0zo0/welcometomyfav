@@ -46,3 +46,12 @@ body {
 .menu.open {
   transform: translateX(0);
 }
+.close-btn {
+  position: absolute;
+  top: 24px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 40px;
+}
