@@ -180,18 +180,24 @@ html.show-content .content {
   opacity: 0.85;
 }
 
-/* 설표셀피 최종 안정본 */
-
+/* 설표셀피: 제목 고정 + 사진만 스크롤 + 사진이 위로 못 침범하게 */
 #selfie h2{
   position: sticky;
   top: 72px;
   z-index: 100;
   background: #0C0384;
   padding: 10px 0 12px;
+
+  /* 여기 두 줄이 핵심 */
+  border-bottom: 14px solid #0C0384; /* 제목 아래에 '가림막' */
+  margin-bottom: 0;
 }
 
+/* 스크롤 영역은 제목 아래에서 시작 */
 #selfie .gallery-scroll{
-  height: calc(100vh - 140px);
+  height: calc(100vh - 72px - 90px); /* 상단바+제목 공간 고려 */
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  padding-top: 14px; /* 가림막 높이랑 맞추기 */
 }
