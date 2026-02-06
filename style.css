@@ -218,32 +218,6 @@ body.show-content .content {
   margin-top: 0; /* 이미 조정했지만 안전용 */
 }
 
-/* 설표셀피 제목 고정 + 왼쪽 정렬 + 풀폭 배경(위로 사진 안 비치게) */
-#selfie h2{
-  position: sticky;
-  top: 72px;
-  z-index: 10;
-  background: #0C0384;
-
-  /* 기본 제목 스타일 유지 */
-  font-size: 22px;
-  letter-spacing: 2px;
-
-  /* 사진 그리드(좌우 24px)랑 같은 라인으로 맞추기 */
-  margin: 0 0 14px;
-  margin-left: -24px;
-  margin-right: -24px;
-  padding: 12px 24px 14px;
-
-  /* “풀폭”인데 가로 스크롤 안 생기게 */
-  width: calc(100% + 48px);
-  box-sizing: border-box;
-
-  text-align: left;
-
-  /* 아래쪽 가리는 막(원하면) */
-  box-shadow: 0 14px 0 #0C0384;
-}
 /* 페이지 전체 스크롤 막고, 내부(갤러리)만 스크롤 */
 body.show-content {
   height: 100vh;
