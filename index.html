@@ -50,11 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 메뉴 열기/닫기
   if (btn && menu) {
-    btn.addEventListener('click', () => menu.classList.add('open'))
-  }
+  btn.addEventListener('click', () => {
+    menu.classList.add('open')
+    document.body.classList.remove('show-content')
+  })
+}
   if (close && menu) {
-    close.addEventListener('click', () => menu.classList.remove('open'))
-  }
+  close.addEventListener('click', () => {
+    menu.classList.remove('open')
+    document.body.classList.add('show-content')
+  })
+}
 
   // 섹션 하나만 보이게
   function showOnly(hash) {
