@@ -180,56 +180,18 @@ html.show-content .content {
   opacity: 0.85;
 }
 
-/* =========================
-   설표셀피: 제목 고정 + 사진만 스크롤 (iOS 안정판)
-   show-content는 html에 붙는다
-   ========================= */
+/* 설표셀피 최종 안정본 */
 
-/* 페이지(바깥) 스크롤 잠그고, 안쪽 스크롤만 쓰기 */
-html.show-content,
-html.show-content body {
-  height: 100%;
-  overflow: hidden;
-}
-html.show-content .content {
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* selfie 영역만 스크롤 컨테이너로 만들기 */
-#selfie.section { padding: 0; } /* 섹션 기본 패딩 제거 (안쪽에서 따로 준다) */
-
-#selfie > .gallery-scroll{
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 90px;     /* .content padding-top과 동일 */
-  bottom: 0;
-
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-
-  overscroll-behavior: contain;
-  touch-action: pan-y;
-}
-
-/* 제목은 gallery-scroll 안에서 sticky */
-#selfie .selfie-title{
+#selfie h2{
   position: sticky;
-  top: 0;
-  z-index: 50;
-
-  margin: 0;
-  height: 52px;
-  display: flex;
-  align-items: center;
-
+  top: 72px;
+  z-index: 100;
   background: #0C0384;
-  padding: 0 24px;
+  padding: 10px 0 12px;
 }
 
-/* 사진은 제목 아래에서 시작 + 좌우 여백 유지 */
-#selfie .grid{
-  padding: 14px 24px 60px;
+#selfie .gallery-scroll{
+  height: calc(100vh - 140px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
