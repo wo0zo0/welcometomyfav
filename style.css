@@ -91,6 +91,7 @@ body.show-content .content {
 .section h2 {
   margin: 0 0 14px;
   font-size: 22px;
+  letter-spacing: 2px;
 }
 /* 라이트박스에서 버튼 공간 확보 */
 .lb-img {
