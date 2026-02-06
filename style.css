@@ -179,81 +179,26 @@ body.show-content .content {
   font-size: 14px;
   opacity: 0.85;
 }
-/* ===== 셀피: 제목 고정 + 사진만 스크롤(확정판) ===== */
+/* ===== SELFIE 최종: 제목 고정 + 사진만 스크롤 ===== */
 
-/* 페이지는 스크롤 금지 */
-body.show-content { overflow: hidden; }
-
-/* 화면 안에 content를 고정 */
-body.show-content .content {
+/* 페이지는 스크롤하지 않게 */
+body.show-content{
+  height: 100vh;
+  overflow: hidden;
+}
+body.show-content .content{
   height: 100vh;
   overflow: hidden;
 }
 
-/* 상단 고정 버튼들 때문에 content가 이미 padding-top: 90px 쓰고 있음
-   그 아래 영역(= 실제 컨텐츠 영역)만 셀피가 꽉 차게 */
+/* selfie 섹션은 패딩 제거(안에서 직접 줌) */
 #selfie.section{
-  padding: 0 24px;
-  height: calc(100vh - 90px);
-  display: flex;
-  flex-direction: column;
-}
-
-/* 제목은 고정 영역(절대 스크롤 안 함) */
-#selfie .selfie-title{
-  flex: 0 0 auto;
-  margin: 0 0 14px;
-  font-size: 22px;
-  letter-spacing: 2px;
-  text-align: left;
-  background: #0C0384; /* 사진이 위로 올라와도 제목 배경 유지 */
-  z-index: 2;
-}
-
-/* 사진만 스크롤되는 영역 */
-#selfie .gallery-scroll{
-  flex: 1 1 auto;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  touch-action: pan-y;
-  padding-bottom: 60px;
-}
-
-/* 그리드는 scroll 영역 안에서만 좌우 여백 유지 */
-#selfie .gallery-scroll .grid{
-  padding: 0;
-}
-/* 강제: 페이지 스크롤 끄고, 셀피에서만 스크롤 */
-body { overflow: hidden; height: 100vh; }
-.content.show-content { height: 100vh; overflow: hidden; }
-
-#selfie { height: calc(100vh - 90px); display: flex; flex-direction: column; }
-#selfie .gallery-scroll { flex: 1 1 auto; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-#selfie .selfie-title { flex: 0 0 auto; background: #0C0384; }
-/* =========================
-   selfie: 제목 고정 + 사진만 스크롤
-   ========================= */
-
-/* 페이지(body)는 스크롤 금지 */
-body.show-content {
-  height: 100vh;
-  overflow: hidden;
-}
-body.show-content .content {
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* selfie 섹션은 패딩 빼고(안에서 따로 줌) */
-#selfie.section {
   padding: 0 !important;
 }
 
-/* 스크롤은 이 박스만 */
-#selfie .gallery-scroll {
-  height: calc(100vh - 90px);
+/* 스크롤은 여기서만 */
+#selfie .gallery-scroll{
+  height: calc(100vh - 90px); /* content padding-top 90px */
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -262,22 +207,23 @@ body.show-content .content {
 }
 
 /* 제목은 gallery-scroll 안에서 sticky */
-#selfie .gallery-scroll > .selfie-title {
+#selfie .gallery-scroll > .selfie-title{
   position: sticky;
   top: 0;
   z-index: 50;
 
   margin: 0;
-  padding: 0 24px 14px;
+  padding: 12px 24px 14px;
 
   font-size: 22px;
   letter-spacing: 2px;
   text-align: left;
 
   background: #0C0384;
+  box-shadow: 0 14px 0 #0C0384;
 }
 
-/* 사진 그리드 영역 여백 */
-#selfie .gallery-scroll > .grid {
+/* 사진 여백 */
+#selfie .gallery-scroll > .grid{
   padding: 10px 24px 60px;
 }
