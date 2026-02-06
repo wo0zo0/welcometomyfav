@@ -201,18 +201,3 @@ body.show-content .content {
   -webkit-overflow-scrolling: touch;
   padding-right: 2px;
 }
-/* 설표셀피 제목 고정 최종 */
-#selfie h2 {
-  position: sticky;
-  top: 72px;
-  z-index: 100;
-  background: #0C0384;
-  padding: 10px 0 12px;
-}
-
-/* 사진만 내부 스크롤 */
-#selfie .gallery-scroll {
-  height: calc(100vh - 140px);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
