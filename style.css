@@ -249,3 +249,39 @@ body.show-content .content {
 #selfie.section > .gallery-scroll .grid {
   padding: 10px 24px 60px;
 }
+/* 설표셀피: 제목 고정(스크롤 밖) + 사진만 스크롤 */
+body.show-content{
+  height: 100vh;
+  overflow: hidden;
+}
+body.show-content .content{
+  height: 100vh;
+  overflow: hidden;
+}
+
+#selfie.section{
+  height: calc(100vh - 90px - 60px); /* content padding(위90 아래60) */
+  display: flex;
+  flex-direction: column;
+}
+
+#selfie.section > h2{
+  flex: 0 0 auto;
+  margin: 0 0 14px;
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-align: left;
+  padding: 0 24px; /* 제목도 사진 왼쪽 라인 맞춤 */
+}
+
+#selfie.section > .gallery-scroll{
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+#selfie.section > .gallery-scroll .grid{
+  padding: 10px 24px 60px;
+}
