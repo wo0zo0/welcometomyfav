@@ -154,9 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
   lbNext.addEventListener('click', () => setLb(current + 1))
 let uiHidden = false
 
-lbImg.addEventListener('click', () => {
-  uiHidden = !uiHidden
+lb.addEventListener('click', (e) => {
+  // 버튼/X 누른 건 토글하지 말기
+  if (e.target.closest('button')) return
 
+  uiHidden = !uiHidden
   lbClose.style.display = uiHidden ? 'none' : 'block'
   lbPrev.style.display = uiHidden ? 'none' : 'block'
   lbNext.style.display = uiHidden ? 'none' : 'block'
