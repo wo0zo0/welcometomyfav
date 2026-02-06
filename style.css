@@ -244,14 +244,6 @@ body.show-content .content {
   /* 아래쪽 가리는 막(원하면) */
   box-shadow: 0 14px 0 #0C0384;
 }
-#selfie .gallery-scroll {
-  height: calc(100vh - 72px - 70px); 
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-right: 2px;
-  padding-top: 10px;
-  overflow-x: hidden;
-}
 /* 페이지 전체 스크롤 막고, 내부(갤러리)만 스크롤 */
 body.show-content {
   height: 100vh;
@@ -261,4 +253,18 @@ body.show-content {
 #selfie,
 #selfie h2 {
   text-align: left;
+}
+/* 설표셀피: 제목은 화면에 붙고, 페이지가 스크롤 */
+#selfie h2 {
+  position: sticky;
+  top: 72px;      /* 로고/상단바 아래 높이 */
+  z-index: 10;
+  background: #0C0384;
+  padding: 12px 24px 14px;
+  margin: 0 0 14px;
+}
+
+/* 가로 흔들림 방지 */
+#selfie {
+  overflow-x: hidden;
 }
