@@ -241,3 +241,8 @@ body.show-content {
   height: 100vh;
   overflow: hidden;
 }
+/* 설표셀피 제목 왼쪽 정렬 고정 */
+#selfie,
+#selfie h2 {
+  text-align: left;
+}
