@@ -27,22 +27,7 @@ body {
   z-index: 20;
 }
 
-/* 로고 */
-.logo-btn {
-  position: fixed;
-  top: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  letter-spacing: 0.12em;
-  font-weight: 600;
-  z-index: 20;
-}
-
-/* 메뉴: 검정 전체화면 */
+/* 메뉴 */
 .menu {
   position: fixed;
   inset: 0;
@@ -84,60 +69,131 @@ body {
 }
 .menu-link:visited { color: #fff; }
 
-/* 첫 화면은 비워두기 */
+/* 첫 화면 비움 */
 .content {
   display: none !important;
-  padding-top: 90px;     /* 상단바 아래로 */
-  height: 100vh;         /* 화면 한 장 */
-  overflow: hidden;      /* 페이지 자체는 스크롤 금지 */
+  padding: 90px 24px 60px;
 }
-body.show-content .content { display: block !important; }
+body.show-content .content {
+  display: block !important;
+}
 
-/* 공통 섹션 */
+/* 섹션 */
 .section {
-  padding: 0 24px 60px;
+  margin-top: 10px;
+  scroll-margin-top: 140px;
 }
-.section h2 {
+
+/* ===== 설표셀피 제목 ===== */
+#selfie h2 {
   margin: 0 0 14px;
+  padding: 0 24px;
   font-size: 22px;
   letter-spacing: 2px;
-}
-/* 설표셀피 제목 고정 + 사진만 스크롤 */
-#selfie {
-  margin-top: 0; /* 이미 조정했지만 안전용 */
-}
+  text-align: left;
 
-#selfie h2 {
   position: sticky;
-  top: 72px;              /* 상단바(메뉴+로고) 아래 */
+  top: 72px;
+  background: #0C0384;
   z-index: 5;
-  background: #0C0384;    /* 배경이랑 동일 */
-  padding: 10px 0 12px;
 }
 
+/* ===== 사진만 스크롤되게 ===== */
 #selfie .gallery-scroll {
-  height: calc(100vh - 72px - 70px); 
+  height: calc(100vh - 72px - 70px);
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  padding-right: 2px;
-}
-/* 페이지 전체 스크롤 막고, 내부(갤러리)만 스크롤 */
-body.show-content {
-  height: 100vh;
-  overflow: hidden;
 }
 
-/* iOS에서 더 안정적으로 */
-main.content {
-  height: 100vh;
-  overflow: hidden;
-}
-body.show-content {
-  height: 100vh;
-  overflow: hidden;
+/* 갤러리 그리드 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px 24px 60px;
 }
 
-main.content {
-  height: 100vh;
-  overflow: hidden;
+.grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* 설명 텍스트 */
+.section p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 상단 로고 */
+.logo-btn {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  z-index: 20;
+}
+
+/* ===== 라이트박스 ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.lightbox.open { display: flex; }
+
+.lb-img {
+  max-width: 74vw;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.lb-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 56px;
+  line-height: 1;
+  padding: 10px 14px;
+  opacity: 0.6;
+}
+.lb-prev { left: 0px; }
+.lb-next { right: 0px; }
+
+.lb-count {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.5);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  opacity: 0.85;
 }
