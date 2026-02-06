@@ -213,24 +213,14 @@ body.show-content .content {
   font-size: 14px;
   opacity: 0.85;
 }
-/* 설표셀피 제목 고정 + 사진만 스크롤 */
-#selfie {
-  margin-top: 0; /* 이미 조정했지만 안전용 */
-}
-
-/* 설표셀피 제목 왼쪽 정렬 고정 */
-#selfie,
-#selfie h2 {
-  text-align: left;
-}
-/* 설표셀피: 제목은 화면에 붙고, 페이지가 스크롤 */
-#selfie h2 {
+#selfie .gallery-scroll h2{
   position: sticky;
-  top: 90px;      /* 로고/상단바 아래 높이 */
-  z-index: 10;
-  background: #0C0384;
-  padding: 12px 24px 14px;
+  top: 0;
+  z-index: 20;
   margin: 0 0 14px;
+  padding: 12px 24px 14px;
+  background: #0C0384;
+  text-align: left;
 }
 
 /* 가로 흔들림 방지 */
