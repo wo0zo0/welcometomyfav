@@ -189,29 +189,47 @@ body.show-content .content { display: block !important; }
   height: calc(100vh - 90px); /* 상단바(=content padding-top) 제외 */
   overflow: hidden; /* 페이지 스크롤로 안 넘어가게 */
 }
+/* ===== 셀피: 제목 고정 + 사진만 스크롤 (페이지 스크롤 잠금) ===== */
 
-/* 제목은 고정된 영역(스크롤 안됨) */
-#selfie > h2{
+/* content가 보일 때는 페이지(바디) 스크롤을 잠그고 */
+body.show-content {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* 메인 컨텐츠도 화면 높이 안에서만 */
+body.show-content .content {
+  height: 100dvh;
+  overflow: hidden;
+  padding: 90px 0 0; /* 상단(메뉴/로고) 공간 */
+}
+
+/* selfie 섹션은 좌우 패딩을 직접 관리 */
+#selfie.section {
+  padding: 0;
+}
+
+/* 제목은 위에 고정된 것처럼 보이게 */
+#selfie > h2 {
   margin: 0;
   padding: 0 24px 14px;
   text-align: left;
-  background: #0C0384; /* 사진이 위로 올라와도 침범 못하게 */
-  position: relative;
-  z-index: 5;
 }
 
-/* 사진 영역만 스크롤 */
-#selfie > .gallery-scroll{
-  height: calc(100% - 22px - 14px); /* 제목 글자높이(22px쯤) + 아래여백(14px) */
+/* 사진만 스크롤되는 영역 */
+#selfie > .gallery-scroll {
+  height: calc(100dvh - 90px - 22px - 14px); /* 상단90 + 제목대략(22+14) */
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-  touch-action: pan-y;
-  padding: 10px 24px 60px; /* 그리드 좌우 여백 여기서 줌 */
 }
 
-/* 그리드는 padding 없이 */
-#selfie > .gallery-scroll > .grid{
-  padding: 0;
+/* 그리드 좌우 여백 + 아래 여백 */
+#selfie > .gallery-scroll > .grid {
+  padding: 10px 24px 60px;
 }
+
+/* 가로 흔들림 방지 보강 */
+html, body { overflow-x: hidden; }
+#selfie { overflow-x: hidden; }
