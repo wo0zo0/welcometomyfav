@@ -218,10 +218,15 @@ body.show-content .content {
 
 #selfie h2 {
   position: sticky;
-  top: 72px;              /* 상단바(메뉴+로고) 아래 */
-  z-index: 5;
-  background: #0C0384;    /* 배경이랑 동일 */
-  padding: 10px 0 12px;
+  top: 72px;
+  z-index: 10;
+  background: #0C0384;
+
+  width: 100%;
+  padding: 12px 24px 14px; /* 좌우 24는 content랑 맞추기 */
+  margin: 0;
+
+  box-shadow: 0 14px 0 #0C0384; /* 아래쪽도 같은 배경으로 한번 더 덮기 */
 }
 
 #selfie .gallery-scroll {
@@ -229,6 +234,7 @@ body.show-content .content {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding-right: 2px;
+  padding-top: 10px;
 }
 /* 페이지 전체 스크롤 막고, 내부(갤러리)만 스크롤 */
 body.show-content {
