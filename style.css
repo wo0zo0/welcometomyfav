@@ -211,3 +211,22 @@ body.show-content .content {
   font-size: 14px;
   opacity: 0.85;
 }
+/* 설표셀피 제목 고정 + 사진만 스크롤 */
+#selfie {
+  margin-top: 0; /* 이미 조정했지만 안전용 */
+}
+
+#selfie h2 {
+  position: sticky;
+  top: 72px;              /* 상단바(메뉴+로고) 아래 */
+  z-index: 5;
+  background: #0C0384;    /* 배경이랑 동일 */
+  padding: 10px 0 12px;
+}
+
+#selfie .gallery-scroll {
+  height: calc(100vh - 72px - 70px); 
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 2px;
+}
