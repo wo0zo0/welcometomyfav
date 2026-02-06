@@ -233,14 +233,22 @@ body.show-content .content {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  padding: 0 24px 60px;
 
   touch-action: pan-y; /* 좌우로 흔들리는거 방지 */
   overscroll-behavior: contain;
 }
-
+#selfie .grid{
+  padding: 10px 24px 60px;
+}
 /* 페이지 전체 스크롤 막기 */
 body.show-content{
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+body.show-content .content{
   height: 100vh;
   overflow: hidden;
 }
