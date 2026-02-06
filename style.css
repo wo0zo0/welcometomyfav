@@ -187,6 +187,7 @@ html.show-content .content {
   z-index: 100;
   background: #0C0384;
   padding: 10px 0 12px;
+border-bottom: 16px solid #0C0384;
 
   /* 여기 두 줄이 핵심 */
   border-bottom: 14px solid #0C0384; /* 제목 아래에 '가림막' */
@@ -201,4 +202,3 @@ html.show-content .content {
   -webkit-overflow-scrolling: touch;
   padding-top: 14px; /* 가림막 높이랑 맞추기 */
 }
-#selfie { overflow: hidden; }
