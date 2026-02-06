@@ -201,3 +201,33 @@ html.show-content .content {
   -webkit-overflow-scrolling: touch;
   padding-top: 14px; /* 가림막 높이랑 맞추기 */
 }
+/* ====== 스크롤: 바깥(페이지) 금지 + selfie 안쪽만 스크롤 ====== */
+html.show-content,
+html.show-content body {
+  height: 100%;
+  overflow: hidden; /* 로고/메뉴 있는 상단은 고정, 페이지 자체는 안 움직이게 */
+}
+
+html.show-content .content {
+  height: 100vh;
+  overflow: hidden; /* content도 바깥 스크롤 금지 */
+}
+
+/* 상단바 높이(지금 content padding-top이 90px라 그 값으로 맞춤) */
+:root { --topbar: 90px; }
+
+/* ====== selfie: 제목은 상단바 아래에만 붙고, 사진은 그 아래에서만 스크롤 ====== */
+#selfie .selfie-title {
+  position: sticky;
+  top: var(--topbar);      /* 로고 영역 지나가지 않게 여기서 딱 멈춤 */
+  z-index: 100;
+  background: #0C0384;
+  padding: 10px 0 12px;
+}
+
+#selfie .gallery-scroll {
+  height: calc(100vh - var(--topbar) - 60px); /* 60px는 제목(대충) 공간 */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-top: 14px; /* 첫 줄 사진이 제목 밑에서 시작 */
+}
