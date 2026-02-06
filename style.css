@@ -197,3 +197,23 @@ body.show-content .content {
   font-size: 14px;
   opacity: 0.85;
 }
+/* ===== 여기부터 추가 (맨 아래) ===== */
+
+/* content 화면에서는 페이지 자체 스크롤 막기 */
+body.show-content {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 대신 selfie 안에서만 스크롤 */
+#selfie .gallery-scroll {
+  height: calc(100vh - 72px - 70px);
+  overflow-y: auto;
+}
+
+/* 혹시 겹침 방지: 제목은 항상 위에 */
+#selfie h2 {
+  z-index: 50;
+}
+
+/* ===== 여기까지 추가 ===== */
