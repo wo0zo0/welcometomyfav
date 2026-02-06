@@ -183,11 +183,11 @@ body.show-content .content {
    SELFIE: 제목 고정 + 사진만 스크롤
    ========================= */
 
-/* show-content 상태에서 "페이지 전체" 스크롤 잠금 */
+html, body {
+  height: 100%;
+}
+
 body.show-content {
-  position: fixed;
-  inset: 0;
-  width: 100%;
   height: 100vh;
   overflow: hidden;
 }
