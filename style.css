@@ -225,3 +225,10 @@ body.show-content .content {
 #selfie .gallery-scroll .grid{
   padding: 0;
 }
+/* 강제: 페이지 스크롤 끄고, 셀피에서만 스크롤 */
+body { overflow: hidden; height: 100vh; }
+.content.show-content { height: 100vh; overflow: hidden; }
+
+#selfie { height: calc(100vh - 90px); display: flex; flex-direction: column; }
+#selfie .gallery-scroll { flex: 1 1 auto; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+#selfie .selfie-title { flex: 0 0 auto; background: #0C0384; }
