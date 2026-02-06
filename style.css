@@ -198,17 +198,6 @@ body.show-content .content {
 /* 가로 흔들림 방지 */
 #selfie { overflow-x: hidden; }
 
-/* 스크롤 영역 */
-#selfie .gallery-scroll{
-  height: calc(100vh - 90px); /* content 상단 padding(90px)만큼 제외 */
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-
-  touch-action: pan-y;
-  overscroll-behavior: contain;
-}
-
 /* 제목: 스크롤 컨테이너 안에서 sticky */
 #selfie .gallery-scroll h2{
   position: sticky;
@@ -224,18 +213,19 @@ body.show-content .content {
   z-index: 5;
   box-shadow: 0 14px 0 #0C0384; /* 사진이 위로 비치지 않게 막 */
 }
+/* selfie: 제목 고정 + 아래 사진만 지나가게 */
+#selfie h2{
+  position: sticky;
+  top: 72px;              /* 상단바(로고/햄버거) 아래 높이 */
+  z-index: 25;
 
-/* 사진 그리드 패딩 */
+  margin: 0 0 14px;
+  padding: 12px 24px 14px;
+  text-align: left;
+
+  background: #0C0384;    /* 사진이 위로 비치지 않게 */
+  box-shadow: 0 14px 0 #0C0384; /* 제목 아래를 같은 색으로 한번 더 덮어주기 */
+}
 #selfie .grid{
-  padding: 10px 0 60px;
-}
-
-/* 페이지 전체 스크롤 막기 (내부 스크롤만 쓰기) */
-body.show-content{
-  height: 100vh;
-  overflow: hidden;
-}
-body.show-content .content{
-  height: 100vh;
-  overflow: hidden;
+  padding-top: 10px;
 }
