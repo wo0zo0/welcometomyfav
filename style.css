@@ -201,3 +201,4 @@ html.show-content .content {
   -webkit-overflow-scrolling: touch;
   padding-top: 14px; /* 가림막 높이랑 맞추기 */
 }
+#selfie { overflow: hidden; }
