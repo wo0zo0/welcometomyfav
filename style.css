@@ -62,6 +62,9 @@ body::before{
   align-items: center;
   justify-content: center;
   z-index: 30;
+  opacity: 1;
+  isolation: isolate;
+  transform: translateZ(0);
 }
 .menu.open { display: flex; }
 
