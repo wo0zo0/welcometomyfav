@@ -232,3 +232,52 @@ body { overflow: hidden; height: 100vh; }
 #selfie { height: calc(100vh - 90px); display: flex; flex-direction: column; }
 #selfie .gallery-scroll { flex: 1 1 auto; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 #selfie .selfie-title { flex: 0 0 auto; background: #0C0384; }
+/* =========================
+   selfie: 제목 고정 + 사진만 스크롤
+   ========================= */
+
+/* 페이지(body)는 스크롤 금지 */
+body.show-content {
+  height: 100vh;
+  overflow: hidden;
+}
+body.show-content .content {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* selfie 섹션은 패딩 빼고(안에서 따로 줌) */
+#selfie.section {
+  padding: 0 !important;
+}
+
+/* 스크롤은 이 박스만 */
+#selfie .gallery-scroll {
+  height: calc(100vh - 90px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+/* 제목은 gallery-scroll 안에서 sticky */
+#selfie .gallery-scroll > .selfie-title {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  margin: 0;
+  padding: 0 24px 14px;
+
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-align: left;
+
+  background: #0C0384;
+}
+
+/* 사진 그리드 영역 여백 */
+#selfie .gallery-scroll > .grid {
+  padding: 10px 24px 60px;
+}
