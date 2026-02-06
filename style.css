@@ -12,7 +12,18 @@ body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
   font-size: 16px;
 }
-
+/* 상단바(로고/메뉴) 뒤로 내용 비치는 거 가림판 */
+body::before{
+  content:"";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90px;          /* .content padding-top이 90px라서 동일 */
+  background: #0C0384;   /* 배경색 */
+  z-index: 15;           /* 컨텐츠 위, 버튼(20) 아래 */
+  pointer-events: none;
+}
 /* ☰ 버튼 */
 .menu-btn {
   position: fixed;
