@@ -179,3 +179,55 @@ body.show-content .content {
   font-size: 14px;
   opacity: 0.85;
 }
+/* =========================
+   SELFIE: 제목 고정 + 사진만 스크롤
+   ========================= */
+
+/* show-content 상태에서 "페이지 전체" 스크롤 잠금 */
+body.show-content {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* content도 스크롤 안 하게 만들고, 아래 여백은 gallery-scroll이 담당 */
+body.show-content .content {
+  height: 100vh;
+  overflow: hidden;
+  padding: 90px 0 0; /* 네가 이미 쓰는 값 유지 */
+}
+
+/* #selfie 섹션만 화면 높이에 맞게 쪼개기 */
+#selfie.section {
+  height: calc(100vh - 90px); /* content padding-top(90) 제외 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 제목은 바깥이라 자동 고정 느낌, 위에 상단바 높이만큼 띄우려면 아래 padding 유지 */
+#selfie > h2 {
+  margin: 0 0 14px;
+  padding: 0 24px; /* .section padding과 동일 */
+  background: #0C0384;
+  z-index: 5;
+}
+
+/* 사진만 스크롤 */
+#selfie > .gallery-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+
+  padding: 0 24px 60px; /* 좌우 여백은 여기로 옮김, 아래 60은 안전 여백 */
+}
+
+/* selfie 안에서는 섹션 기본 padding이 스크롤 박스랑 중복되니까 제거 */
+#selfie.section {
+  padding: 0;
+}
