@@ -230,3 +230,14 @@ body.show-content .content {
   -webkit-overflow-scrolling: touch;
   padding-right: 2px;
 }
+/* 페이지 전체 스크롤 막고, 내부(갤러리)만 스크롤 */
+body.show-content {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* iOS에서 더 안정적으로 */
+main.content {
+  height: 100vh;
+  overflow: hidden;
+}
