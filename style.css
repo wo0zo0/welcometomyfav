@@ -84,27 +84,6 @@ body.show-content .content {
   scroll-margin-top: 140px;
 }
 
-/* ===== 설표셀피 제목 ===== */
-#selfie h2 {
-  margin: 0 0 14px;
-  padding: 0 24px;
-  font-size: 22px;
-  letter-spacing: 2px;
-  text-align: left;
-
-  position: sticky;
-  top: 72px;
-  background: #0C0384;
-  z-index: 5;
-}
-
-/* ===== 사진만 스크롤되게 ===== */
-#selfie .gallery-scroll {
-  height: calc(100vh - 72px - 70px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-}
 
 /* 갤러리 그리드 */
 .grid {
@@ -205,20 +184,6 @@ body.show-content {
   overflow: hidden;
 }
 
-/* 대신 selfie 안에서만 스크롤 */
-#selfie .gallery-scroll {
-  height: calc(100vh - 72px - 70px);
-  overflow-y: auto;
-}
-
-/* 혹시 겹침 방지: 제목은 항상 위에 */
-#selfie h2 {
-  z-index: 50;
-}
-
-/* ===== 여기까지 추가 ===== */
-/* ===== 스크롤 봉인(맨 아래에 추가) ===== */
-
 /* 기본은 페이지 스크롤 가능 */
 html, body { height: 100%; }
 
@@ -238,22 +203,56 @@ body.show-content .content {
   height: 100vh;
   overflow: hidden !important;
 }
-
-/* 대신 selfie 안의 gallery-scroll만 스크롤 허용 */
-#selfie .gallery-scroll {
-  height: calc(100vh - 72px - 70px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
+/* === selfie: 제목 고정 + 사진만 내부 스크롤 (상단바/제목 침범 방지) === */
+:root{
+  --topbar-h: 72px;     /* 위에 UNNAMED/햄버거 있는 영역 */
+  --selfie-title-h: 64px; /* '설표셀피' 바 높이 */
 }
 
-/* 제목은 위에 고정(겹침 방지) */
-#selfie h2 {
-  position: sticky;
-  top: 72px;
-  z-index: 50;
+#selfie{
+  position: relative;
+}
+
+/* 제목은 화면에 고정 */
+#selfie > h2{
+  position: fixed;
+  top: var(--topbar-h);
+  left: 0;
+  right: 0;
+  z-index: 30;
+
+  margin: 0;
+  height: var(--selfie-title-h);
+  display: flex;
+  align-items: center;
+
+  padding: 0 24px;
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-align: left;
+
   background: #0C0384;
 }
 
-/* ===== 끝 ===== */
+/* 사진만 스크롤되는 영역: 제목 아래부터 화면 바닥까지 */
+#selfie > .gallery-scroll{
+  position: fixed;
+  top: calc(var(--topbar-h) + var(--selfie-title-h));
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+
+  padding: 10px 24px 60px;
+}
+
+/* grid는 padding을 gallery-scroll이 담당하니까 단순화 */
+#selfie > .gallery-scroll .grid{
+  padding: 0;
+}
