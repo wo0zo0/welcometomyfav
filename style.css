@@ -215,3 +215,11 @@ body.show-content .content {
 #selfie > .gallery-scroll {
   padding: 10px 24px 60px;
 }
+.selfie-title {
+  position: sticky;
+  top: 72px;
+  z-index: 50;
+  background: #0C0384;
+  margin: 0;
+  padding: 12px 24px 14px;
+}
