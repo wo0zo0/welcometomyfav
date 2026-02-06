@@ -216,24 +216,24 @@ border-bottom: 16px solid #0C0384;
   -webkit-overflow-scrolling: touch;
   padding-top: 14px; /* 가림막 높이랑 맞추기 */
 }
-/* 라이트박스 등장 애니메이션 */
-.lightbox {
+/* 라이트박스 등장 애니메이션 (티 나게) */
+.lightbox{
   opacity: 0;
-  transition: opacity .25s ease;
+  transition: opacity .35s ease;
 }
 
-.lightbox.open {
+.lightbox.open{
   opacity: 1;
 }
 
-/* 사진 살짝 확대되면서 등장 */
-.lb-img {
-  transform: scale(.92);
+.lb-img{
+  transform: scale(.82);
   opacity: 0;
-  transition: transform .25s ease, opacity .25s ease;
+  transition: transform .35s cubic-bezier(.2,.9,.2,1), opacity .35s ease;
+  will-change: transform, opacity;
 }
 
-.lightbox.open .lb-img {
+.lightbox.open .lb-img{
   transform: scale(1);
   opacity: 1;
 }
