@@ -241,9 +241,28 @@ body.show-content {
   height: 100vh;
   overflow: hidden;
 }
+/* 설표셀피 화면: 섹션 자체를 스크롤 컨테이너로 고정 */
+#selfie {
+  height: calc(100vh - 72px); /* 상단바(메뉴+로고) 빼기 */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 0;
+  padding: 16px 24px 60px; /* 좌우 여백 여기서 통일 */
+}
 
-/* iOS에서 더 안정적으로 */
-main.content {
-  height: 100vh;
-  overflow: hidden;
+/* 설표셀피 제목은 섹션 안에서 고정 */
+#selfie h2 {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #0C0384;
+  padding: 10px 0 12px;
+  margin: 0 0 12px;
+}
+
+/* gallery-scroll은 이제 그냥 래퍼만 (스크롤은 #selfie가 담당) */
+#selfie .gallery-scroll {
+  height: auto;
+  overflow: visible;
+  padding-top: 0;
 }
