@@ -42,7 +42,6 @@
 
   <script>
 document.addEventListener('DOMContentLoaded', () => {
-  document.documentElement.classList.add('show-content')
   const btn = document.querySelector('.menu-btn')
   const menu = document.querySelector('.menu')
   const close = document.querySelector('.close-btn')
@@ -67,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openContentAndGo(hash) {
-    document.body.classList.add('show-content')
+    document.documentElement.classList.add('show-content')
     showOnly(hash)
     const target = document.querySelector(hash)
     setTimeout(() => {
@@ -98,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (logoBtn) {
     logoBtn.addEventListener('click', () => {
       if (menu) menu.classList.remove('open')
-      document.body.classList.remove('show-content')
+      document.documentElement.classList.remove('show-content')
       history.replaceState(null, "", location.pathname)
       window.scrollTo(0, 0)
     })
