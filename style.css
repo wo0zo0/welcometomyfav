@@ -2,7 +2,6 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
-html, body { overflow-x: hidden; }
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
@@ -11,6 +10,7 @@ body {
   color: #fff;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 /* ☰ 버튼 */
@@ -84,14 +84,12 @@ body {
 }
 .menu-link:visited { color: #fff; }
 
-/* 첫 화면은 비워두기: content 기본 숨김 */
+/* 첫 화면: content 기본 숨김 */
 .content {
   display: none !important;
-  padding: 90px 0 0; /* 여기서 좌우 padding 빼고, 섹션별로 관리 */
+  padding: 90px 0 0; /* 상단바 공간만 남김 */
 }
-body.show-content .content {
-  display: block !important;
-}
+body.show-content .content { display: block !important; }
 
 /* 공통 섹션 */
 .section {
@@ -179,47 +177,41 @@ body.show-content .content {
   font-size: 14px;
   opacity: 0.85;
 }
+
 /* =========================
-   SELFIE: 제목 고정 + 사진만 스크롤
+   핵심: 설표셀피만
+   제목 고정 + 사진만 스크롤
    ========================= */
 
-html, body {
-  height: 100%;
-}
-/* ===== 설표셀피: 제목 고정 + 사진만 스크롤 (최종) ===== */
-
-html, body { height: 100%; }
-body.show-content { height: 100vh; overflow: hidden; }
-body.show-content .content { height: 100vh; overflow: hidden; }
-
+/* selfie 섹션을 화면 높이에 맞춰 고정하고, 내부만 굴리기 */
 #selfie.section{
-  padding: 0;
-  height: calc(100vh - 90px);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  padding: 0; /* 공통 section padding 제거하고 직접 관리 */
+  height: calc(100vh - 90px); /* 상단바(=content padding-top) 제외 */
+  overflow: hidden; /* 페이지 스크롤로 안 넘어가게 */
 }
 
+/* 제목은 고정된 영역(스크롤 안됨) */
 #selfie > h2{
   margin: 0;
   padding: 0 24px 14px;
-  font-size: 22px;
-  letter-spacing: 2px;
   text-align: left;
-  background: #0C0384;
+  background: #0C0384; /* 사진이 위로 올라와도 침범 못하게 */
+  position: relative;
   z-index: 5;
 }
 
+/* 사진 영역만 스크롤 */
 #selfie > .gallery-scroll{
-  flex: 1 1 auto;
+  height: calc(100% - 22px - 14px); /* 제목 글자높이(22px쯤) + 아래여백(14px) */
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  padding: 0 24px 60px;
   overscroll-behavior: contain;
   touch-action: pan-y;
+  padding: 10px 24px 60px; /* 그리드 좌우 여백 여기서 줌 */
 }
 
-#selfie .grid{
+/* 그리드는 padding 없이 */
+#selfie > .gallery-scroll > .grid{
   padding: 0;
 }
