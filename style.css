@@ -2,6 +2,7 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
+html, body { overflow-x: hidden; }
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
@@ -10,7 +11,6 @@ body {
   color: #fff;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
   font-size: 16px;
-  overflow-x: hidden;
 }
 
 /* ☰ 버튼 */
@@ -84,18 +84,20 @@ body {
 }
 .menu-link:visited { color: #fff; }
 
-/* 첫 화면: content 기본 숨김 */
+/* 첫 화면은 비워두기: content 기본 숨김 */
 .content {
   display: none !important;
-  padding: 90px 0 0; /* 상단바 공간만 남김 */
+  padding: 90px 0 0; /* 상단바 공간 */
 }
-body.show-content .content { display: block !important; }
+body.show-content .content {
+  display: block !important;
+}
 
 /* 공통 섹션 */
 .section {
   margin-top: 10px;
   scroll-margin-top: 140px;
-  padding: 0 24px; /* 기본 좌우 여백 */
+  padding: 0 24px;
 }
 .section h2 {
   margin: 0 0 14px;
@@ -179,57 +181,47 @@ body.show-content .content { display: block !important; }
 }
 
 /* =========================
-   핵심: 설표셀피만
-   제목 고정 + 사진만 스크롤
+   셀피: 제목 고정 + 사진만 스크롤
+   핵심: body는 스크롤 막고, #selfie가 스크롤 컨테이너가 됨
    ========================= */
 
-/* selfie 섹션을 화면 높이에 맞춰 고정하고, 내부만 굴리기 */
-#selfie.section{
-  padding: 0; /* 공통 section padding 제거하고 직접 관리 */
-  height: calc(100vh - 90px); /* 상단바(=content padding-top) 제외 */
-  overflow: hidden; /* 페이지 스크롤로 안 넘어가게 */
-}
-/* ===== 셀피: 제목 고정 + 사진만 스크롤 (페이지 스크롤 잠금) ===== */
-
-/* content가 보일 때는 페이지(바디) 스크롤을 잠그고 */
+/* 페이지 전체 스크롤 막기 */
 body.show-content {
-  height: 100dvh;
+  height: 100vh;
   overflow: hidden;
 }
-
-/* 메인 컨텐츠도 화면 높이 안에서만 */
 body.show-content .content {
-  height: 100dvh;
+  height: 100vh;
   overflow: hidden;
-  padding: 90px 0 0; /* 상단(메뉴/로고) 공간 */
 }
 
-/* selfie 섹션은 좌우 패딩을 직접 관리 */
+/* #selfie 자체가 스크롤 */
 #selfie.section {
-  padding: 0;
-}
-
-/* 제목은 위에 고정된 것처럼 보이게 */
-#selfie > h2 {
-  margin: 0;
-  padding: 0 24px 14px;
-  text-align: left;
-}
-
-/* 사진만 스크롤되는 영역 */
-#selfie > .gallery-scroll {
-  height: calc(100dvh - 90px - 22px - 14px); /* 상단90 + 제목대략(22+14) */
+  padding: 0; /* 좌우 여백은 제목/사진쪽에서 따로 줌 */
+  height: calc(100vh - 90px); /* content의 padding-top(상단바 공간)만큼 제외 */
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 
-/* 그리드 좌우 여백 + 아래 여백 */
-#selfie > .gallery-scroll > .grid {
-  padding: 10px 24px 60px;
+/* 제목 고정 (스크롤해도 여기 붙어있음) */
+#selfie > h2 {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  margin: 0;
+  padding: 0 24px 14px;
+  background: #0C0384;
+  box-shadow: 0 14px 0 #0C0384; /* 사진이 위로 올라와도 침범 못하게 “막” */
 }
 
-/* 가로 흔들림 방지 보강 */
-html, body { overflow-x: hidden; }
+/* 사진 영역 여백 */
+#selfie > .gallery-scroll {
+  padding: 0 24px 60px;
+}
+
+/* 가로 흔들림 보험 */
 #selfie { overflow-x: hidden; }
