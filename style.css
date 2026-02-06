@@ -27,7 +27,22 @@ body {
   z-index: 20;
 }
 
-/* 메뉴 */
+/* 로고 */
+.logo-btn {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  z-index: 20;
+}
+
+/* 메뉴: 검정 전체화면 */
 .menu {
   position: fixed;
   inset: 0;
@@ -69,30 +84,34 @@ body {
 }
 .menu-link:visited { color: #fff; }
 
-/* 첫 화면 비움 */
+/* 첫 화면은 비워두기: content 기본 숨김 */
 .content {
   display: none !important;
-  padding: 90px 24px 60px;
+  padding: 90px 0 0; /* 여기서 좌우 padding 빼고, 섹션별로 관리 */
 }
 body.show-content .content {
   display: block !important;
 }
 
-/* 섹션 */
+/* 공통 섹션 */
 .section {
   margin-top: 10px;
   scroll-margin-top: 140px;
+  padding: 0 24px; /* 기본 좌우 여백 */
 }
-
+.section h2 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-align: left;
+}
 
 /* 갤러리 그리드 */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  padding: 10px 24px 60px;
 }
-
 .grid img {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -100,28 +119,12 @@ body.show-content .content {
   border-radius: 10px;
 }
 
-/* 설명 텍스트 */
 .section p {
   font-size: 14px;
   line-height: 1.6;
 }
 
-/* 상단 로고 */
-.logo-btn {
-  position: fixed;
-  top: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  letter-spacing: 0.12em;
-  font-weight: 600;
-  z-index: 20;
-}
-
-/* ===== 라이트박스 ===== */
+/* 라이트박스 */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -176,83 +179,48 @@ body.show-content .content {
   font-size: 14px;
   opacity: 0.85;
 }
-/* ===== 여기부터 추가 (맨 아래) ===== */
 
-/* content 화면에서는 페이지 자체 스크롤 막기 */
-body.show-content {
-  height: 100vh;
-  overflow: hidden;
-}
+/* ----------------------------
+   여기부터 핵심: 설표셀피만
+   제목 고정 + 사진만 스크롤
+---------------------------- */
 
-/* 기본은 페이지 스크롤 가능 */
-html, body { height: 100%; }
+/* 섹션 padding을 제목/그리드 기준으로 유지 */
+#selfie.section { padding: 0; } /* 이 섹션만 직접 컨트롤 */
 
-/* content 화면에서는 페이지 자체 스크롤 완전 차단 */
-html.show-content,
-body.show-content {
-  height: 100%;
-  overflow: hidden !important;
-  position: fixed;
-  width: 100%;
-  overscroll-behavior: none;
-  touch-action: none;
-}
-
-/* content 영역도 스크롤 막기 */
-body.show-content .content {
-  height: 100vh;
-  overflow: hidden !important;
-}
-/* === selfie: 제목 고정 + 사진만 내부 스크롤 (상단바/제목 침범 방지) === */
-:root{
-  --topbar-h: 72px;     /* 위에 UNNAMED/햄버거 있는 영역 */
-  --selfie-title-h: 64px; /* '설표셀피' 바 높이 */
-}
-
-#selfie{
-  position: relative;
-}
-
-/* 제목은 화면에 고정 */
-#selfie > h2{
-  position: fixed;
-  top: var(--topbar-h);
-  left: 0;
-  right: 0;
-  z-index: 30;
+/* 제목: 상단바(로고/메뉴) 아래에서 sticky */
+#selfie > h2 {
+  position: sticky;
+  top: 72px;               /* 상단 로고/메뉴 높이 맞춘 값 */
+  z-index: 15;
+  background: #0C0384;
 
   margin: 0;
-  height: var(--selfie-title-h);
-  display: flex;
-  align-items: center;
-
-  padding: 0 24px;
+  padding: 12px 24px 14px; /* 좌우 24px로 사진과 라인 맞춤 */
   font-size: 22px;
   letter-spacing: 2px;
   text-align: left;
 
-  background: #0C0384;
+  /* 아래쪽이 비치지 않게 살짝 막아주기 */
+  box-shadow: 0 14px 0 #0C0384;
 }
 
-/* 사진만 스크롤되는 영역: 제목 아래부터 화면 바닥까지 */
-#selfie > .gallery-scroll{
-  position: fixed;
-  top: calc(var(--topbar-h) + var(--selfie-title-h));
-  left: 0;
-  right: 0;
-  bottom: 0;
-
+/* 사진만 스크롤되는 박스 */
+#selfie > .gallery-scroll {
+  height: calc(100vh - 72px - 12px - 22px - 14px - 14px);
+  /* 100vh - 상단바72 - (제목 padding위12 + 폰트대략22 + padding아래14) - 제목 아래 여백14 느낌 */
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 
   touch-action: pan-y;
   overscroll-behavior: contain;
+}
 
+/* 그리드에만 좌우 여백 적용 */
+#selfie > .gallery-scroll > .grid {
   padding: 10px 24px 60px;
 }
 
-/* grid는 padding을 gallery-scroll이 담당하니까 단순화 */
-#selfie > .gallery-scroll .grid{
-  padding: 0;
-}
+/* 가로 흔들림 방지(보험) */
+#selfie { overflow-x: hidden; }
