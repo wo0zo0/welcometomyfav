@@ -217,3 +217,43 @@ body.show-content {
 }
 
 /* ===== 여기까지 추가 ===== */
+/* ===== 스크롤 봉인(맨 아래에 추가) ===== */
+
+/* 기본은 페이지 스크롤 가능 */
+html, body { height: 100%; }
+
+/* content 화면에서는 페이지 자체 스크롤 완전 차단 */
+html.show-content,
+body.show-content {
+  height: 100%;
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+/* content 영역도 스크롤 막기 */
+body.show-content .content {
+  height: 100vh;
+  overflow: hidden !important;
+}
+
+/* 대신 selfie 안의 gallery-scroll만 스크롤 허용 */
+#selfie .gallery-scroll {
+  height: calc(100vh - 72px - 70px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+/* 제목은 위에 고정(겹침 방지) */
+#selfie h2 {
+  position: sticky;
+  top: 72px;
+  z-index: 50;
+  background: #0C0384;
+}
+
+/* ===== 끝 ===== */
