@@ -205,3 +205,47 @@ body.show-content .content { display: block !important; }
   border: 1px solid rgba(255,255,255,0.22);
   backdrop-filter: blur(6px);
 }
+/* === 설표셀피: 제목 고정 + 사진만 스크롤 (최종 오버라이드) === */
+
+/* show-content일 때 페이지(body) 스크롤은 막고, 내부만 굴리기 */
+body.show-content {
+  position: static;     /* 기존에 fixed 걸려있으면 풀어버림 */
+  height: 100vh;
+  overflow: hidden;
+}
+
+body.show-content .content {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 설표셀피 섹션을 세로 레이아웃으로, 화면 높이 안에서만 동작 */
+#selfie.section {
+  height: calc(100vh - 90px - 60px); /* .content padding(위90 아래60)와 맞춤 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 제목은 고정처럼: 스크롤 영역 밖에 두고 항상 위에 남게 */
+#selfie.section > h2 {
+  flex: 0 0 auto;
+  margin: 0 0 14px;
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-align: left;
+  padding: 0;          /* 기존 padding 0 24px 쓰고 싶으면 여기서 0 24px로 */
+}
+
+/* 사진만 스크롤 */
+#selfie.section > .gallery-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+/* 그리드 좌우 여백은 여기서 관리 */
+#selfie.section > .gallery-scroll .grid {
+  padding: 10px 24px 60px;
+}
