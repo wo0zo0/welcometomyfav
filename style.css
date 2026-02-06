@@ -172,56 +172,47 @@ body.show-content .content {
   font-size: 14px;
   opacity: 0.85;
 }
-/* ===== 설표셀피: 제목 fixed + 사진만 스크롤 (스크롤/잘림 해결) ===== */
+/* ===== 설표셀피: 제목 fixed + 사진만 스크롤 (iOS 스크롤 확정판) ===== */
 
-/* show-content가 html/body 어디에 붙어도 페이지 스크롤만 잠금 */
-html.show-content,
-body.show-content{
-  height: 100%;
-  overflow: hidden;
-}
-
-/* 제목 높이 변수 */
 :root{
-  --selfie-title-h: 52px; /* 제목 영역 높이 */
-  --content-top: 90px;    /* .content padding-top 값 */
-  --side: 24px;           /* 좌우 여백 */
+  --content-top: 90px;     /* .content padding-top */
+  --side: 24px;            /* 좌우 여백 */
+  --title-h: 52px;         /* 제목 높이 */
+  --title-gap: 14px;       /* 제목 아래 간격 */
 }
 
 /* 제목은 진짜 고정 */
 #selfie > h2{
   position: fixed;
+  top: var(--content-top);
   left: var(--side);
   right: var(--side);
-  top: var(--content-top);
-  z-index: 100;
-
-  margin: 0;
-  height: var(--selfie-title-h);
+  height: var(--title-h);
   display: flex;
   align-items: center;
 
+  margin: 0;
+  z-index: 100;
   background: #0C0384;
-  padding: 0 0 0 0; /* 좌우는 section padding으로 이미 맞춰져 있음 */
+  padding: 0;
 }
 
-/* 사진은 이 박스 안에서만 스크롤 */
+/* 사진만 스크롤되는 박스 */
 #selfie > .gallery-scroll{
   position: fixed;
   left: 0;
   right: 0;
-  top: var(--content-top);
+  top: calc(var(--content-top) + var(--title-h) + var(--title-gap));
   bottom: 0;
 
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-
-  /* 제목만큼 위 여백을 줘서 사진이 제목 아래서 시작 */
-  padding-top: calc(var(--selfie-title-h) + 14px);
+  touch-action: pan-y;
+  overscroll-behavior: contain;
 }
 
-/* grid 좌우 여백은 여기서 주기 */
+/* 그리드 여백은 여기서 */
 #selfie > .gallery-scroll > .grid{
   padding: 0 var(--side) 60px;
 }
