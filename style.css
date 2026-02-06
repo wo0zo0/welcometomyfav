@@ -195,13 +195,3 @@ html.show-content .content {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-html.show-content,
-html.show-content body {
-  height: 100%;
-  overflow: hidden;
-}
-
-html.show-content .content {
-  height: 100vh;
-  overflow: hidden;
-}
