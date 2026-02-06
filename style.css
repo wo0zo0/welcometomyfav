@@ -179,49 +179,39 @@ body.show-content .content {
   font-size: 14px;
   opacity: 0.85;
 }
+/* ===== 셀피 영역: 제목 고정 + 사진만 스크롤 ===== */
 
-/* =========================
-   셀피: 제목 고정 + 사진만 스크롤
-   핵심: body는 스크롤 막고, #selfie가 스크롤 컨테이너가 됨
-   ========================= */
-
-/* 페이지 전체 스크롤 막기 */
+/* 페이지 전체는 스크롤 막기 */
 body.show-content {
   height: 100vh;
   overflow: hidden;
 }
+
 body.show-content .content {
   height: 100vh;
   overflow: hidden;
 }
 
-/* #selfie 자체가 스크롤 */
+/* #selfie 자체가 스크롤 컨테이너 */
 #selfie.section {
-  padding: 0; /* 좌우 여백은 제목/사진쪽에서 따로 줌 */
-  height: calc(100vh - 90px); /* content의 padding-top(상단바 공간)만큼 제외 */
+  padding: 0;
+  height: calc(100vh - 90px);
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  touch-action: pan-y;
 }
 
-/* 제목 고정 (스크롤해도 여기 붙어있음) */
+/* 제목은 위에 붙어서 고정 */
 #selfie > h2 {
   position: sticky;
   top: 0;
   z-index: 50;
-
   margin: 0;
-  padding: 0 24px 14px;
+  padding: 12px 24px 14px;
   background: #0C0384;
-  box-shadow: 0 14px 0 #0C0384; /* 사진이 위로 올라와도 침범 못하게 “막” */
 }
 
 /* 사진 영역 여백 */
 #selfie > .gallery-scroll {
-  padding: 0 24px 60px;
+  padding: 10px 24px 60px;
 }
-
-/* 가로 흔들림 보험 */
-#selfie { overflow-x: hidden; }
