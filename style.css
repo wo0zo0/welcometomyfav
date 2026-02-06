@@ -237,3 +237,10 @@ border-bottom: 16px solid #0C0384;
   transform: scale(1);
   opacity: 1;
 }
+.grid img{
+  transition: transform .12s ease;
+}
+
+.grid img:active{
+  transform: scale(.94);
+}
